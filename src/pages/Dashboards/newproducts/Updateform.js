@@ -1,9 +1,30 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import axios from 'axios';
 
 export default function UpdateForm() {
   const [productId, setProductId] = useState('');
+  const [productInfo, setProductInfo] = useState({ name: '', currentQuantity: '' });
   const [quantityToAdd, setQuantityToAdd] = useState('');
+
+  useEffect(() => {
+    // Check if the productId is not empty
+    if (productId) {
+      const productid = productId;
+      console.log(productid)
+      // Fetch product information based on the productId
+      axios.post('http://localhost/optihiveapi/getProductInfo.php/', productid)
+        .then(response => {
+          console.log(response.data)
+          const name = response.data.product_name;
+          const currentQuantity = response.data.quantity;
+          setProductInfo({ name, currentQuantity });
+        })
+        .catch(error => {
+          console.error(error);
+          // Handle error
+        });
+    }
+  }, [productId]);
 
   const UpdateProduct = (event) => {
     event.preventDefault();
@@ -30,17 +51,19 @@ export default function UpdateForm() {
           type="text"
           placeholder="Product ID"
           name="productId"
-          style={{ marginBottom: "1rem" }}
           onChange={(e) => setProductId(e.target.value)}
         />
+          <label>Product Name:</label> 
+          <label>{productInfo.name}</label>
+          <label>Current Quantity:</label>
+          <label> {productInfo.currentQuantity}</label>
         <input
           type="text"
           placeholder="Quantity to Add"
           name="quantityToAdd"
-          style={{ marginBottom: "1rem" }}
           onChange={(e) => setQuantityToAdd(e.target.value)}
         />
-<button onClick={(e) => UpdateProduct(e)}>Submit</button>
+        <button onClick={(e) => UpdateProduct(e)}>Submit</button>
       </form>
     </>
   )
