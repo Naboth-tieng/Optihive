@@ -13,26 +13,8 @@ import {
   useMatch,
 } from "react-router-dom";
 
-export default function Signinpage() {
-  const [signInData, setSignInData] = useState([]);
-  const [showSignin, setShowSignin] = useState(true);
+export default function Signinpage({onSignin,cont}) {
 
-  useEffect(() => {
-    console.log("signInData:", signInData);
-    if (signInData.data && signInData.data.message === "Login successful") {
-      setShowSignin(false);
-      console.log("Working");
-      cont();
-    }
-  }, [signInData]);
-
-  function cont() {
-    setShowSignin(false);
-  }
-
-  function back() {
-    setShowSignin(true);
-  }
 
   return (
     <>
@@ -73,7 +55,7 @@ export default function Signinpage() {
               <Routes>
                 <Route
                   path="/"
-                  element={<LoginForm cont={cont} />}
+                  element={<LoginForm onSignin={onSignin} cont={cont} />}
                 />
                 <Route path="/customersignup" element={<Signup />} />
               </Routes>

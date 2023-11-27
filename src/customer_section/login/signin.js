@@ -3,7 +3,7 @@ import axios from "axios";
 import Profile from "./svgs/profile.svg";
 import lock from "./svgs/lock.svg";
 
-export default function LoginForm({cont,onSignin}) {
+export default function LoginForm({onSignin,cont}) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
@@ -24,7 +24,7 @@ export default function LoginForm({cont,onSignin}) {
     };
 
     axios
-      .post("http://localhost/optihiveapi/login.php", userData, {
+      .post("http://localhost/optihiveapi/customer/signin.php/", userData, {
         headers: {
           "Content-Type": "application/json",
         },
@@ -34,7 +34,8 @@ export default function LoginForm({cont,onSignin}) {
         alert(response.data.message)
         onSignin(response.data);
         if(response.data.message==="Login successful"){
-          cont()
+          cont();
+          console.log('Enter sentury')
         }
       })
       .catch(function (error) {

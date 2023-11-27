@@ -1,6 +1,6 @@
 import { Router, Routes,Route } from "react-router-dom";
 import Signinemployee from "./pages/signinpage"
-import Signincustomer from "./customer_section/signinpage"
+import Signincustomer from "./customer_section/Blank"
 
 export default function app(){
   return(

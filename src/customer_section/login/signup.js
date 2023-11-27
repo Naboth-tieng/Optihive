@@ -41,7 +41,7 @@ export default function CreateUserForm() {
       };
       console.log(userdata);
       axios
-        .post("", userdata, {
+        .post("http://localhost/optihiveapi/customer/signup.php", userdata, {
           headers: {
             "Content-Type": "application/json",
           },
