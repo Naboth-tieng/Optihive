@@ -123,7 +123,7 @@ export default function CreateUserForm() {
         <option value="Order Processor">Order Processor</option>
       </select>
       <br></br>
-      <button className="continue" onClick={handleCreateUser}>
+      <button className="continue" style={{ background: "#F6E89A", padding: "1.3rem" }}onClick={handleCreateUser}>
         Continue
       </button>
     </div>

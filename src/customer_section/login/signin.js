@@ -3,7 +3,7 @@ import axios from "axios";
 import Profile from "./svgs/profile.svg";
 import lock from "./svgs/lock.svg";
 
-export default function LoginForm({ cont, onSignin }) {
+export default function LoginForm({cont,onSignin}) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
@@ -31,10 +31,10 @@ export default function LoginForm({ cont, onSignin }) {
       })
       .then(function (response) {
         console.log(response);
-        alert(response.data.message);
+        alert(response.data.message)
         onSignin(response.data);
-        if (response.data.message === "Login successful") {
-          cont();
+        if(response.data.message==="Login successful"){
+          cont()
         }
       })
       .catch(function (error) {
@@ -44,15 +44,15 @@ export default function LoginForm({ cont, onSignin }) {
   };
 
   return (
-    <div className="signin" >
-      <div className="inputbox"style={{  border: '3px solid #8D4520' }}>
-        <div className="input-left" >
+    <div className="signin">
+      <div className="inputbox">
+        <div className="input-left">
           <img
             src={Profile}
-            style={{ width: "3.125rem", height: "3.125rem"  }}
+            style={{ width: "3.125rem", height: "3.125rem" }}
           />
         </div>
-        <div className="input-right" style={{borderLeft:"3px solid #8d4520"}}>
+        <div className="input-right">
           <input
             type="email"
             placeholder="Email"
@@ -62,14 +62,14 @@ export default function LoginForm({ cont, onSignin }) {
         </div>
       </div>
 
-      <div className="inputbox" style={{  border: '3px solid #8D4520' }}>
+      <div className="inputbox">
         <div className="input-left">
           <img
             src={lock}
             style={{ width: "2.08331rem", height: "2.34375rem" }}
           />
         </div>
-        <div className="input-right" style={{borderLeft:"3px solid #8d4520"}}>
+        <div className="input-right">
           <input
             type="password"
             placeholder="Password"
@@ -78,11 +78,7 @@ export default function LoginForm({ cont, onSignin }) {
           />
         </div>
       </div>
-      <button
-        className="continue"
-        style={{ background: "#F6E89A", padding: "1.3rem" }}
-        onClick={handleLogin}
-      >
+      <button className="continue" style={{ background: "#7AE7C7", padding: "0.6rem" }}onClick={handleLogin}>
         Continue
       </button>
     </div>

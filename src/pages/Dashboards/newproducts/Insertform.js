@@ -70,6 +70,12 @@ export default function Insertform({onNewItemOrRestock}) {
           />
           <select
             name="brandName"
+            style={{
+              borderRadius:"0.4rem",
+              fontWeight:"bold",
+              marginTop:"0.56rem",
+              background:"transparent"
+            }}
             onChange={(e) => setSelectedBrand(e.target.value)}
           >
             <option value="" disabled selected>Select Brand</option>
@@ -92,7 +98,7 @@ export default function Insertform({onNewItemOrRestock}) {
             name="quantity"
             onChange={(e) => setQuantity(e.target.value)}
           />
-<button onClick={(e) => CreateProduct(e)}>Submit</button>
+<button  style={{fontWeight:"bolder",color:"white",marginTop:"3rem",borderRadius: '1.25rem',background: '#000'}}onClick={(e) => CreateProduct(e)}>Submit</button>
         </form>
       </>
     );

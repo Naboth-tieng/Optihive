@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import Storage from "./charts/storage";
 import axios from "axios";
 import Icon from "./icon.svg";
+import logout from "./logout.svg"
 import "../../App.css";
 import {
   Link,
@@ -17,6 +18,7 @@ import Most from "./leastmost/Most";
 import calender from "./calender.svg";
 import Insertform from "./newproducts/Insertform";
 import UpdateForm from "./newproducts/Updateform";
+import Notification from "./notifications/Notification";
 
 export default function Dashboard({ back, user }) {
   let date = new Date().toLocaleDateString();
@@ -56,11 +58,11 @@ export default function Dashboard({ back, user }) {
             }}
           >
             <p className="profile">{user.username.charAt(0)}</p>
-            <p>{user.username}</p>
-            <p>{user.userType}</p>
+            <p style={{fontSize:"1.125rem",fontWeight:"bolder"}}>{user.username}</p>
+            <p style={{fontSize:"0.875rem"}}>{user.userType}</p>
           </div>
           <button className="signout" onClick={back}>
-            Signout
+            <img src={logout}/>
           </button>
         </div>
         <div className="dash-right">
@@ -82,38 +84,42 @@ export default function Dashboard({ back, user }) {
           </div>
           <div className="line"></div>
           <div className="bottomdiv">
-            <div className="updateform">
-              <div className="nav">
-                <Customlink to="/newitem">New Item</Customlink>
-                <Customlink to="/restock">Restock</Customlink>
+            <div className = "bottomstorage-left"style={{borderRight:"4px solid #8D4520" , padding:"1rem"}}>
+              <div className="store-notification" >
+                <Notification />
               </div>
-              <div className="currform">
-                <Routes>
-                  <Route path="/newitem" element={<Insertform />} />
-                  <Route path="/restock" element={<UpdateForm />} />
-                </Routes>
-              </div>
-            </div>
-            <div className="vertical" style={{padding:"2rem"}}></div>
-
             <div className="leastmost">
               <div className="nav">
-                <Customlink to="/least">
+                <Customlink to="/employee/">
                   Least
                   <img src={Leasticon} />
                 </Customlink>
-                <Customlink to="/most">
+                <Customlink to="/employee/most">
                   Most
                   <img src={Mosticon} />
                 </Customlink>
               </div>
               <div className="currform">
                 <Routes>
-                  <Route path="/least" element={<Least />} />
+                  <Route path="/" element={<Least />} />
                   <Route path="/most" element={<Most />} />
                 </Routes>
               </div>
             </div>
+            </div>
+            <div className="updateform">
+              <div className="nav">
+                <Customlink to="/employee/newitem">New Item</Customlink>
+                <Customlink to="/employee/">Restock</Customlink>
+              </div>
+              <div className="productform">
+                <Routes>
+                  <Route path="/newitem" element={<Insertform />} />
+                  <Route path="/" element={<UpdateForm />} />
+                </Routes>
+              </div>
+            </div>
+            
           </div>
         </div>
       </div>

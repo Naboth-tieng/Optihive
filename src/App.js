@@ -1,39 +1,14 @@
-import './App.css';
-import Landpage from "./pages/landpage"
-import Dashboard from './pages/Dashboards/dashboard';
-import { useState, useEffect } from 'react';
-import Chatbot from './pages/chatbot';
+import { Router, Routes,Route } from "react-router-dom";
+import Signinemployee from "./pages/signinpage"
+import Signincustomer from "./customer_section/signinpage"
 
-export default function App() {
-  const [signInData, setSignInData] = useState([]);
-  const [showSignin, setShowSignin] = useState(true);
-
-  useEffect(() => {
-    console.log("signInData:", signInData);
-    if (signInData.data && signInData.data.message === "Login successful") {
-      setShowSignin(false);
-      console.log("Working");
-      cont();
-    }
-  }, [signInData]);
-
-  function cont() {
-    setShowSignin(false);
-  }
-
-  function back() {
-    setShowSignin(true);
-  }
-
-  return (
+export default function app(){
+  return(
     <>
-      {showSignin ? (
-        <Landpage cont={cont} onSignin={setSignInData} />
-      ) : signInData.userType === "Order Processor" ? (
-        <Chatbot />
-      ) : (
-        <Dashboard back={back} user={signInData} />
-      )}
+    <Routes>
+    <Route path="/employee/*" element={<Signinemployee />} />
+    <Route exact path="/*" element={<Signincustomer />} />
+    </Routes>
     </>
-  );
+  )
 }

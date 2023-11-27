@@ -1,8 +1,7 @@
 import Lg from "./svg/trucktop.svg";
 import im from "./svg/Account-amico.png";
 import LoginForm from "./login/signin";
-import Signup from "./login/signup";
-import { Route, Link, Routes,useMatch,useResolvedPath } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 export default function landapage({cont,onSignin}) {
   return (
@@ -12,15 +11,9 @@ export default function landapage({cont,onSignin}) {
           <img className="logo" src={Lg} style={{margin:"3rem",width:"70%",height:"auto"}} />
           <div className="land-form">
           <p style={{ fontWeight: "bolder", fontSize: "1.5rem", textAlign:"center"}}>Welcome</p>
-          <div className="nav">
-            <Customlink to="/signin">Signin</Customlink>
-            <Customlink to="/signup">signup</Customlink>
-          </div>
+         
           <div className="currform">
-            <Routes>
-              <Route path="/signin" element={<LoginForm cont={cont} onSignin={onSignin}/>} />
-              <Route path="/signup" element={<Signup />} />
-            </Routes>
+           <LoginForm cont={cont} onSignin={onSignin}/>
           </div>
           </div>
           <p className="about">
@@ -31,21 +24,14 @@ export default function landapage({cont,onSignin}) {
             business.
           </p>
         </div>
-        <div className="land-right">
+        <div className="land-right" >
           <img src={im} />
+          <div style={{fontWeight:"700"}}>Click here if you are a <Link to={"/"} style={{textDecoration:"none",color:"#8D4520"}}>Client</Link></div>
+          
         </div>
       </div>
     </>
   );
 }
 
-function Customlink({to,children,...props}){
-const resolvedPath = useResolvedPath(to)
-const isActive = useMatch({path:resolvedPath.pathname,end:true})
 
-  return(
-    <li className={isActive? "active" : ""}>
-      <Link to={to} {...props}>{children}</Link>
-    </li>
-  )
-}

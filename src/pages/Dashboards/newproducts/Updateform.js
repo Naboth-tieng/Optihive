@@ -46,24 +46,40 @@ export default function UpdateForm() {
 
   return (
     <>
-      <form style={{ display: "grid" }}>
+      <form style={{ display: "grid",margin:"1rem" }}>
         <input
           type="text"
           placeholder="Product ID"
           name="productId"
           onChange={(e) => setProductId(e.target.value)}
         />
-          <label>Product Name:</label> 
-          <label>{productInfo.name}</label>
-          <label>Current Quantity:</label>
-          <label> {productInfo.currentQuantity}</label>
+        <table className='storagestable'>
+          <tr>
+            <th>
+            Name
+
+            </th>
+            <th>
+            Quantity
+
+            </th>
+
+          </tr>
+          <tr>
+
+          </tr>
+          <tr>
+            <td>{productInfo.name}</td>
+            <td>{productInfo.currentQuantity}</td>
+          </tr>
+        </table>
         <input
           type="text"
           placeholder="Quantity to Add"
           name="quantityToAdd"
           onChange={(e) => setQuantityToAdd(e.target.value)}
         />
-        <button onClick={(e) => UpdateProduct(e)}>Submit</button>
+        <button style={{fontWeight:"bolder",color:"white",marginTop:"3rem",borderRadius: '1.25rem',background: '#000'}} onClick={(e) => UpdateProduct(e)}>Submit</button>
       </form>
     </>
   )

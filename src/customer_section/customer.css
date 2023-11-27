@@ -1,0 +1,88 @@
+.cust {
+  display: flex;
+  width: 100%;
+}
+.cust-right {
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.logo {
+  width: 30.47981rem;
+  height: 6.25rem;
+  flex-shrink: 0;
+}
+
+.cust-left {
+  width: 50%;
+  background: #f2f2f2;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+}
+.cust-form {
+  width: 80%;
+}
+.cust-left a {
+  text-decoration: none;
+  color: black;
+}
+.activecust a{
+  text-decoration: none;
+  color: white;
+  border-radius: 1.25rem;
+  background: #032FA8;
+  opacity: 1;
+  
+  padding: 1rem 3rem;
+}
+
+.cust-left a.active {
+  color: white;
+}
+.cust-left li {
+  transition: opacity 2s; /* Added "color" property to the transition */
+  transition-timing-function: ease-out;
+  padding: 1rem;
+  font-weight: 700;
+  line-height: normal;
+}
+.cust-left li:hover {
+  opacity: 1;
+}
+
+.cust-left li:not(.active) {
+  opacity: 0.2;
+}
+
+.cust-left li.active {
+  border-radius: 1.25rem;
+  background: #032fa8;
+  padding: 1rem 4.3rem;
+}
+.about {
+  width: 90%;
+}
+
+.custinputbox{
+  
+  padding: 0.3rem;
+  border-radius: 1.5625rem;
+border: 3px solid #032FA8;
+}
+.input-right{
+  color: #000;
+  border-left: 3px solid #032FA8;
+  font-size: 1.5rem;
+font-style: normal;
+font-weight: bold;
+
+}
+
+.inputbox{
+  border: 3px solid #032FA8;
+
+}
