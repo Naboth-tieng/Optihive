@@ -12,9 +12,14 @@ import DeodorantImage from "./svgs/deodrant.svg";
 import SoupImage from "./svgs/soup.svg";
 import MayonnaiseImage from "./svgs/mayonnaise.svg";
 import MargarineImage from "./svgs/margerine.svg";
+import Faceproducts from "./svgs/faceproducts.svg";
+import Chocolate from './svgs/chocolate.svg';
+
 
 export const productImageMap = {
   Sugar: SugarImage,
+  chocolate: Chocolate,
+  'Body care':Faceproducts,
   'Cooking oil': CookingOilImage,
   Soap: SoapImage,
   Rice: RiceImage,

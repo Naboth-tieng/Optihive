@@ -1,25 +1,29 @@
-import { useState, useEffect } from 'react';
-import axios from 'axios';
+import { useState, useEffect } from "react";
+import axios from "axios";
 
 export default function UpdateForm() {
-  const [productId, setProductId] = useState('');
-  const [productInfo, setProductInfo] = useState({ name: '', currentQuantity: '' });
-  const [quantityToAdd, setQuantityToAdd] = useState('');
+  const [productId, setProductId] = useState("");
+  const [productInfo, setProductInfo] = useState({
+    name: "",
+    currentQuantity: "",
+  });
+  const [quantityToAdd, setQuantityToAdd] = useState("");
 
   useEffect(() => {
     // Check if the productId is not empty
     if (productId) {
       const productid = productId;
-      console.log(productid)
+      console.log(productid);
       // Fetch product information based on the productId
-      axios.post('http://localhost/optihiveapi/getProductInfo.php/', productid)
-        .then(response => {
-          console.log(response.data)
+      axios
+        .post("http://localhost/optihiveapi/getProductInfo.php/", productid)
+        .then((response) => {
+          console.log(response.data);
           const name = response.data.product_name;
           const currentQuantity = response.data.quantity;
           setProductInfo({ name, currentQuantity });
         })
-        .catch(error => {
+        .catch((error) => {
           console.error(error);
           // Handle error
         });
@@ -33,12 +37,13 @@ export default function UpdateForm() {
       quantityToAdd: quantityToAdd,
     };
 
-    axios.post('http://localhost/optihiveapi/restock.php/', updateData)
-      .then(response => {
+    axios
+      .post("http://localhost/optihiveapi/restock.php/", updateData)
+      .then((response) => {
         console.log(response.data);
         // Handle success or error as needed
       })
-      .catch(error => {
+      .catch((error) => {
         console.error(error);
         // Handle error
       });
@@ -46,28 +51,19 @@ export default function UpdateForm() {
 
   return (
     <>
-      <form style={{ display: "grid",margin:"1rem" }}>
+      <form style={{ display: "grid", margin: "1rem" }}>
         <input
           type="text"
           placeholder="Product ID"
           name="productId"
           onChange={(e) => setProductId(e.target.value)}
         />
-        <table className='storagestable'>
+        <table className="storagestable">
           <tr>
-            <th>
-            Name
-
-            </th>
-            <th>
-            Quantity
-
-            </th>
-
+            <th>Name</th>
+            <th>Quantity</th>
           </tr>
-          <tr>
-
-          </tr>
+          <tr></tr>
           <tr>
             <td>{productInfo.name}</td>
             <td>{productInfo.currentQuantity}</td>
@@ -79,8 +75,19 @@ export default function UpdateForm() {
           name="quantityToAdd"
           onChange={(e) => setQuantityToAdd(e.target.value)}
         />
-        <button style={{fontWeight:"bolder",color:"white",marginTop:"3rem",borderRadius: '1.25rem',background: '#000'}} onClick={(e) => UpdateProduct(e)}>Submit</button>
+        <button
+          style={{
+            fontWeight: "bolder",
+            color: "white",
+            marginTop: "3rem",
+            borderRadius: "1.25rem",
+            background: "#000",
+          }}
+          onClick={(e) => UpdateProduct(e)}
+        >
+          Submit
+        </button>
       </form>
     </>
-  )
+  );
 }

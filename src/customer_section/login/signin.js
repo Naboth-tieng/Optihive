@@ -35,7 +35,6 @@ export default function LoginForm({onSignin,cont}) {
         onSignin(response.data);
         if(response.data.message==="Login successful"){
           cont();
-          console.log('Enter sentury')
         }
       })
       .catch(function (error) {
