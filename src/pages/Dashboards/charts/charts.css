@@ -1,4 +1,6 @@
 .overview{
+    background: white;
+    
     height: 100%;
     display: flex;
 overflow: auto;

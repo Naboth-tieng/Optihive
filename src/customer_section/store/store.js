@@ -154,6 +154,8 @@ export default function Store({ back, user }) {
           </div>
           <div className="store-cart">
             <Cart
+            setCartItems={setCartItems}
+            clientid={user.clientid}
             email={Email}
               cartItems={cartItems}
               clearCart={clearCart}

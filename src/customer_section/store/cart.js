@@ -6,6 +6,8 @@ import minus from "./svgs/minus.svg";
 import Paystack from "./Paystack/Paystack";
 
 export default function Cart({
+  clientid,
+  setCartItems,
   email,
   clearCart,
   cartItems,
@@ -60,7 +62,7 @@ export default function Cart({
         </p>
       </div>
       <div className="flexcolumn">
-        <Paystack email={email} total={calculateTotal()} />
+        <Paystack setCartItems={setCartItems} cartitems={cartItems} clientid={clientid} email={email} total={calculateTotal()} />
       </div>
     </div>
   );

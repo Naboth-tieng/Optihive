@@ -1,7 +1,9 @@
 import '../App.css';
 import Landpage from "./landpage"
+import OrderProcessorPage from './order&admin/orderprocessor/order';
 import Dashboard from './Dashboards/dashboard';
 import { useState, useEffect } from 'react';
+import Admin from './order&admin/admin/admin';
 
 export default function Signinpage() {
   const [signInData, setSignInData] = useState([]);
@@ -28,12 +30,20 @@ export default function Signinpage() {
     <>
       {showSignin ? (
         <Landpage cont={cont} onSignin={setSignInData} />
-      ) : signInData.userType === "Order Processor" ? (
-        <div>
-          
-        </div>
       ) : (
-        <Dashboard back={back} user={signInData} />
+        // Render different pages based on user type
+        <>
+          {signInData.userType === "Order Processor" && (
+            <OrderProcessorPage back={back} signInData={signInData} />
+          )}
+          {signInData.userType === "Store Manager" && (
+            <Dashboard back={back} user={signInData} />
+          )}
+          {signInData.userType === "admin" && (
+            <Admin back={back} user={signInData} />
+          )}
+          { /* Add more conditions for other user types if needed */ }
+        </>
       )}
     </>
   );

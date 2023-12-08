@@ -1,11 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { Chart } from "react-google-charts";
-import axios from "axios";
 import './charts.css'
 
 function WarehouseCharts({warehouseData}) {
 
-  
+  console.log(warehouseData)
 
   return (
     <div className="overview">
@@ -25,12 +24,12 @@ function WarehouseCharts({warehouseData}) {
             ]}
             options={{
               pieHole:0.9,
-              backgroundColor: '#f2f2f2',              
             }}
           />
         </div>
-      ))}
-    </div>
+      ))} 
+      
+          </div>
   );
 }
 

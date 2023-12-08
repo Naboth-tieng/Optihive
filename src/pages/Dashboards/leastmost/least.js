@@ -14,9 +14,7 @@ export default function Least() {
       });
   }, []);
 
-  useEffect(() => {
-    console.log("LeastData:", LeastData);
-  }, [LeastData]); // This effect will run whenever LeastData changes
+
 
   return (
     <>

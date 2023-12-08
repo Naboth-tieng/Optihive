@@ -51,9 +51,9 @@ export default function UpdateForm() {
 
   return (
     <>
-      <form style={{ display: "grid", margin: "1rem" }}>
+      <form style={{ display: "grid", margin: "0.1rem" }}>
         <input
-          type="text"
+          type="number"
           placeholder="Product ID"
           name="productId"
           onChange={(e) => setProductId(e.target.value)}
@@ -79,7 +79,7 @@ export default function UpdateForm() {
           style={{
             fontWeight: "bolder",
             color: "white",
-            marginTop: "3rem",
+            marginTop: "2rem",
             borderRadius: "1.25rem",
             background: "#000",
           }}

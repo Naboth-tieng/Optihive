@@ -34,6 +34,7 @@ export default function Dashboard({ back, user }) {
       .get("http://localhost/optihiveapi/productswarehouse.php")
       .then((response) => {
         setWarehouseData(response.data);
+        console.log(response.data)
       })
       .catch((error) => {
         console.error("Error fetching warehouse data:", error);
@@ -79,13 +80,14 @@ export default function Dashboard({ back, user }) {
             </div>
           </div>
           <div>
-            <p>Current Stock</p>
+            <p><b>Current Stock</b></p>
             <Storage warehouseData={warehouseData} />
           </div>
           <div className="line"></div>
           <div className="bottomdiv">
             <div className = "bottomstorage-left"style={{borderRight:"4px solid #8D4520" , padding:"1rem"}}>
               <div className="store-notification" >
+                <b>Notification</b>
                 <Notification />
               </div>
             <div className="leastmost">
@@ -108,7 +110,7 @@ export default function Dashboard({ back, user }) {
             </div>
             </div>
             <div className="updateform">
-              <div className="nav">
+              <div className="nav" style={{padding:"0", margin:"0"}}>
                 <Customlink to="/employee/newitem">New Item</Customlink>
                 <Customlink to="/employee/">Restock</Customlink>
               </div>

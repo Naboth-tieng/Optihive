@@ -55,7 +55,7 @@ export default function Insertform({onNewItemOrRestock}) {
   
     return (
       <>
-        <form style={{ display: "grid", margin: "2rem" }}>
+        <form style={{ display: "grid", margin: "0.1rem" }}>
           <input
             type="text"
             placeholder="Product Name"
@@ -98,7 +98,7 @@ export default function Insertform({onNewItemOrRestock}) {
             name="quantity"
             onChange={(e) => setQuantity(e.target.value)}
           />
-<button  style={{fontWeight:"bolder",color:"white",marginTop:"3rem",borderRadius: '1.25rem',background: '#000'}}onClick={(e) => CreateProduct(e)}>Submit</button>
+<button  style={{fontWeight:"bolder",color:"white",marginTop:"2rem",borderRadius: '1.25rem',background: '#000'}}onClick={(e) => CreateProduct(e)}>Submit</button>
         </form>
       </>
     );
